@@ -120,17 +120,17 @@ async function main() {
 
 function createKeydownEventListener(tetromino, scene) {
   return async function keydownEventListener(event) {
-    if (event.key === "ArrowUp") {
+    if (["ArrowUp", "k", "w"].includes(event.key)) {
       await Tetromino.rotate(tetromino);
-    } else if (event.key === "ArrowLeft") {
+    } else if (["ArrowLeft", "h", "a"].includes(event.key)) {
       if (!Tetromino.leftIntersection(tetromino, scene)) {
         await Tetromino.move(tetromino, -1);
       }
-    } else if (event.key === "ArrowRight") {
+    } else if (["ArrowRight", "l", "d"].includes(event.key)) {
       if (!Tetromino.rightIntersection(tetromino, scene)) {
         await Tetromino.move(tetromino, +1);
       }
-    } else if (event.key === "ArrowDown") {
+    } else if (["ArrowDown", "j", "s"].includes(event.key)) {
       if (!Tetromino.downIntersection(tetromino, scene)) {
         await Tetromino.move(tetromino, 0, -1);
       }
